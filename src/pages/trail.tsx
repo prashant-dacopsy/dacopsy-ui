@@ -82,6 +82,7 @@ const TrailPage: React.FC<TrailPageProps> = () => {
                             icon={<FiBarChart2 size={40} />}
                             title="View Result"
                             subtitle="View your desired output in the form of a graph or spreadsheet"
+                            className=""
                         >
                             <div className="p-12">
                                 <Label>Name your dataset</Label>
