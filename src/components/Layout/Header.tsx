@@ -7,7 +7,7 @@ import { Label } from "../ui/label";
 
 export default function Header() {
     return (
-        <div className="flex border px-10 h-28 items-center bg-primary justify-between">
+        <div className="flex  px-10 h-28 items-center bg-primary justify-between">
             <div className="">
                 <div className="flex gap-2 items-center">
                     <CompanyLogo size={40} type="dark" />

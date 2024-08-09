@@ -81,3 +81,11 @@
     background: #f5f5f5;
   }
 }
+
+
+/* Hero Image */
+
+.hero-image{
+  background-image: url('../src//assets/hero-pattern.jpg');
+  background-size: cover;
+}
