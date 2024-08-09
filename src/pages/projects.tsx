@@ -17,7 +17,7 @@ export default function Projects() {
                         {projectsList.map(item => (
                             <Card className="h-full relative pb-16">
                                 <CardHeader>
-                                    <CardTitle className="line-clamp-2" title={item.title}>{item.title}</CardTitle>
+                                    <CardTitle className="line-clamp-2 leading-4 opacity-85" title={item.title}>{item.title}</CardTitle>
                                     <CardDescription>{item.date}</CardDescription>
                                 </CardHeader>
                                 <CardFooter className="absolute bottom-0 right-0">
