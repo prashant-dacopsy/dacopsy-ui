@@ -1,7 +1,7 @@
 import React from "react";
 import { FcGoogle } from "react-icons/fc";
 import { RiBox3Line } from "react-icons/ri";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import CompanyLogo from "../components/Icons/logo";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
@@ -10,6 +10,7 @@ import { Label } from "../components/ui/label";
 interface LoginPageProps { }
 
 const LoginPage: React.FC<LoginPageProps> = () => {
+    const navigate = useNavigate()
     return (
         <div className="grid grid-cols-2 gap-20 items-center ">
             <div className="h-screen cont bg-primary px-20  flex flex-col justify-center">
@@ -23,7 +24,7 @@ const LoginPage: React.FC<LoginPageProps> = () => {
                     </div>
                     <div className="px-10 border rounded-lg h-72 w-[90%] gap-10 border-secondary flex flex-col justify-center">
                         <Label variant={'legend'} className="text-white">Start creating datasets in under a minute!</Label>
-                        <Button variant={'secondary'} className="w-36 text-lg gap-5 text-white font-light h-14">Try Now <RiBox3Line size={30} /></Button>
+                        <Button onClick={() => navigate('./trail')} variant={'secondary'} className="w-36 text-lg gap-5 text-white font-light h-14">Try Now <RiBox3Line size={30} /></Button>
                     </div>
                     <p className="w-[90%] text-justify text-secondary font-semibold">The information provided on this website is for general informational purposes only. We make no representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, suitability, or availability with respect to the website or the information, products, services, or related graphics contained on the website for any purpose. Any reliance you place on such information is therefore strictly at your own risk.</p>
                     <div className="pt-20">
