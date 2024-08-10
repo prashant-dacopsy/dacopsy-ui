@@ -9,7 +9,7 @@ import { NavigationMenu, NavigationMenuList } from "../ui/navigation-menu";
 export const Sidebar = () => {
     const [isCollapsed, setIsCollapsed] = useState(false)
     return (
-        <div className={cn(" bg-white px-1 h-screen relative", isCollapsed ? 'w-20' : 'w-80')}>
+        <div className={cn(" bg-white px-1 min-h-screen relative", isCollapsed ? 'w-20' : 'w-80')}>
             <NavigationMenu>
                 <NavigationMenuList>
                     <ul>
@@ -24,8 +24,8 @@ export const Sidebar = () => {
                             >
                                 {isCollapsed ? item.collapsedIcon : item.icon}
                                 <div className={cn("flex flex-col px-2 ", isCollapsed ? 'hidden' : '')}>
-                                    <p className="font-semibold">{item.title}</p>
-                                    <p className={cn("text-sm")}>{item.description}</p>
+                                    <p className="font-semibold" >{item.title}</p>
+                                    <p >{item.description}</p>
                                 </div>
                             </NavLink>
                         ))}

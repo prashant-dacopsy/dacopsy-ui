@@ -86,18 +86,19 @@ interface InputWithButtonProps {
   className?: string;
   position?: 'left' | 'right';
   btnType?: 'default' | 'primary' | 'secondary';
-  buttonStyle?: string;
+  btnClassName?: string;
   onButtonClick?: () => void;
 }
 
 const buttonStyle: Record<string, string> = {
   default: 'bg-primary hover:bg-primary-dark text-white',
   primary: 'bg-white hover:bg-primary/10 text-primary',
+  secondary: ' border-r bg-white hover:text-primary'
 }
 
-
+// focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary focus:border-neutral-500
 const InputWithButton = React.forwardRef<HTMLInputElement, InputWithButtonProps>(
-  ({ icon, buttonText, btnType = 'default', type = 'text', placeholder, className, position = 'left', onButtonClick }, ref) => {
+  ({ icon, buttonText, btnClassName, btnType = 'default', type = 'text', placeholder, className, position = 'left', onButtonClick }, ref) => {
     return (
       <div className="relative flex items-center">
         {position === 'left' && (
@@ -110,7 +111,7 @@ const InputWithButton = React.forwardRef<HTMLInputElement, InputWithButtonProps>
           type={type}
           placeholder={placeholder}
           className={cn(
-            "rounded-md border border-neutral-300 bg-white py-2 pl-4 pr-20 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary", // Adjust padding for the button
+            "rounded-md border  bg-white py-2 pl-4 pr-20 text-sm focus:outline-none", // Adjust padding for the button
             { 'pl-10': position === 'left' }, // Add space for icon if it's on the left
             className
           )}
@@ -118,7 +119,7 @@ const InputWithButton = React.forwardRef<HTMLInputElement, InputWithButtonProps>
         <button
           type="button"
           onClick={onButtonClick}
-          className={cn("absolute right-0 top-0 bottom-0 px-3 py-2 uppercase rounded-r-md text-sm font-medium focus:outline-none", buttonStyle[btnType])}
+          className={cn("absolute right-0  top-0 bottom-0 px-3 py-2 my-[1px] uppercase rounded-r-md text-sm font-medium focus:outline-none", buttonStyle[btnType], btnClassName)}
         >
           {buttonText}
         </button>

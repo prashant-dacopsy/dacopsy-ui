@@ -8,7 +8,7 @@ const Structure = () => {
     return (
         <>
             <Header />
-            <main className="flex gap-16">
+            <main className="flex gap-5">
                 <Sidebar />
                 <div className="mt-5 container">
                     <Outlet /> {/* This will render the nested routes */}
