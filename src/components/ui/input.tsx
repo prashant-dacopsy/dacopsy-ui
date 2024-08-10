@@ -78,5 +78,56 @@ const InputWithIcon = React.forwardRef<HTMLInputElement, InputWithIconProps>(
 
 )
 
+interface InputWithButtonProps {
+  icon: React.ReactNode;
+  buttonText: string;
+  type?: string;
+  placeholder?: string;
+  className?: string;
+  position?: 'left' | 'right';
+  btnType?: 'default' | 'primary' | 'secondary';
+  btnClassName?: string;
+  onButtonClick?: () => void;
+}
 
-export { Input, InputWithIcon }
+const buttonStyle: Record<string, string> = {
+  default: 'bg-primary hover:bg-primary-dark text-white',
+  primary: 'bg-white hover:bg-primary/10 text-primary',
+  secondary: ' border-r bg-white hover:text-primary'
+}
+
+// focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary focus:border-neutral-500
+const InputWithButton = React.forwardRef<HTMLInputElement, InputWithButtonProps>(
+  ({ icon, buttonText, btnClassName, btnType = 'default', type = 'text', placeholder, className, position = 'left', onButtonClick }, ref) => {
+    return (
+      <div className="relative flex items-center">
+        {position === 'left' && (
+          <div className="absolute text-slate-400 inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+            {icon}
+          </div>
+        )}
+        <input
+          ref={ref}
+          type={type}
+          placeholder={placeholder}
+          className={cn(
+            "rounded-md border  bg-white py-2 pl-4 pr-20 text-sm focus:outline-none", // Adjust padding for the button
+            { 'pl-10': position === 'left' }, // Add space for icon if it's on the left
+            className
+          )}
+        />
+        <button
+          type="button"
+          onClick={onButtonClick}
+          className={cn("absolute right-0  top-0 bottom-0 px-3 py-2 my-[1px] uppercase rounded-r-md text-sm font-medium focus:outline-none", buttonStyle[btnType], btnClassName)}
+        >
+          {buttonText}
+        </button>
+      </div>
+    );
+  }
+);
+
+
+export { Input, InputWithButton, InputWithIcon }
+
