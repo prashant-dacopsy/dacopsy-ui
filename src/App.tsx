@@ -4,9 +4,9 @@ import Dashboard from './pages/dashoard';
 import Datasets from './pages/datasets';
 import LoginPage from './pages/login';
 import Projects from './pages/projects';
+import SubscriptionPage from './pages/subscription';
 import TrailPage from './pages/trail';
 import Verified from './pages/verified';
-
 
 function App() {
   return (
@@ -20,6 +20,7 @@ function App() {
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="projects" element={<Projects />} />
           <Route path="datasets" element={<Datasets />} />
+          <Route path="/subscription" element={<SubscriptionPage />} />
           {/* Add more routes here as needed */}
         </Route>
       </Routes>
@@ -28,5 +29,3 @@ function App() {
 }
 
 export default App;
-
-
