@@ -11,7 +11,8 @@ export const Sidebar = () => {
   return (
     <div
       className={cn(
-        ' bg-white px-1 min-h-screen relative',
+        `bg-white
+         px-1 min-h-screen relative`,
         isCollapsed ? 'w-20' : 'w-80'
       )}
     >
@@ -23,19 +24,26 @@ export const Sidebar = () => {
                 to={item.url}
                 key={item.title}
                 className={({ isActive }) =>
-                  `flex gap-1 items-center border h-20 m-2 p-2 rounded-lg transition-colors duration-300 
-                                    ${isActive ? 'border-primary text-primary' : 'bg-white text-gray-900 hover:bg-gray-100'}`
+                  `flex gap-2 items-center h-20 m-2 p-2 rounded-lg transition-colors duration-300 
+                                    ${isActive ? 'border-primary text-primary bg-secondary' : 'bg-white text-gray-900 hover:bg-gray-100'}`
                 }
               >
-                {isCollapsed ? item.collapsedIcon : item.icon}
+                <div className="flex flex-col p-2">
+                  {isCollapsed ? item.collapsedIcon : item.icon}
+                </div>
                 <div
                   className={cn(
-                    'flex flex-col px-2 ',
+                    'flex flex-col p-2 ',
                     isCollapsed ? 'hidden' : ''
                   )}
                 >
-                  <p className="font-semibold">{item.title}</p>
-                  <p>{item.description}</p>
+                  <p
+                    className=" text-black text-lg"
+                    style={{ fontSize: '13pt' }}
+                  >
+                    {item.title}
+                  </p>
+                  <p className="text-zinc-500 text-sm">{item.description}</p>
                 </div>
               </NavLink>
             ))}

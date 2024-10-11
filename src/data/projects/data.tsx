@@ -7,6 +7,12 @@ interface Project {
 
 export const projectsList: Project[] = [
   {
+    id: 3,
+    title: 'Coronavirus disease (COVID-19): a scoping review',
+    date: '13th December 2023',
+    link: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+  },
+  {
     id: 1,
     title: 'University of Cambridge - Fall 2023',
     date: '13th December 2023',
@@ -19,12 +25,7 @@ export const projectsList: Project[] = [
     date: '13th December 2023',
     link: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
   },
-  {
-    id: 3,
-    title: 'Coronavirus disease (COVID-19): a scoping review',
-    date: '13th December 2023',
-    link: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-  },
+
   {
     id: 4,
     title: 'Productivity and Outcome in Developing countries',
