@@ -1,50 +1,74 @@
-import { BsDatabase, BsGear } from 'react-icons/bs';
+import { useState } from 'react';
 import LineChart from '../components/Charts/LineChart';
 import { Button } from '../components/ui/button';
-import { Card, CardContent, CardHeader } from '../components/ui/card';
+import { Card, CardContent } from '../components/ui/card';
 import { Checkbox } from '../components/ui/checkbox';
+
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogFooter,
-  DialogHeader,
-  DialogTitle,
   DialogTrigger,
 } from '../components/ui/dialog';
 import { Input, InputWithButton } from '../components/ui/input';
 import { Label } from '../components/ui/label';
 import { Slider } from '../components/ui/slider';
 import { datasetsList } from '../data/datasets/data';
+import {
+  FiActivity,
+  FiBox,
+  FiCpu,
+  FiDownload,
+  FiEdit,
+  FiEdit2,
+  FiInfo,
+  FiLayers,
+  FiMenu,
+  FiRefreshCcw,
+  FiRefreshCw,
+} from 'react-icons/fi';
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+} from '../components/ui/popover';
+import { testFeatures } from '../data/datasets/test-features';
+import {
+  SpreadsheetChart,
+  SpreadSheetComp,
+} from '../components/Charts/spreadsheet';
 
 const iconSize = 30;
+
 function Datasets() {
+  const [selectedDatasets, setSelectedDatasets] = useState<string[]>([]);
+
+  function handleCheckbox(str: string) {
+    setSelectedDatasets((prevState) => [...prevState, str]);
+  }
+
   return (
     <Card className="w-full border-none">
-      <CardHeader>
-        <Label variant={'subtitle'}>Datasets</Label>
-        <Label variant={'input'}>See your data in action!</Label>
-      </CardHeader>
       <CardContent className="grid md:grid-cols-12 gap-5 w-full p-5">
         <div className="col-span-3 rounded-lg">
-          <div className="flex flex-col gap-1">
+          <div className="flex flex-col gap-3">
             <Label variant={'input'}>Project</Label>
-            <Label className="text-base text-primary">
-              University of Cambridge - Fall 2023
-            </Label>
+            <span className="text-base text-primary">
+              Coronavirus disease (COVID-19): a scoping review
+            </span>
             <InputWithButton
-              placeholder="Your Database Name"
+              placeholder="Your dataset Name"
               buttonText="Add"
-              icon={<BsDatabase size={25} />}
+              icon={<FiLayers size={25} />}
               btnType="secondary"
               className="h-16 w-full focus:ring-0 focus:border-gray-100"
             />
             {datasetsList.map((item) => (
               <div
                 key={item.id}
-                className="flex p-2 rounded-lg items-center gap-2 border hover:bg-slate-50"
+                className="flex p-5 rounded-lg items-center gap-5 border hover:bg-slate-50"
               >
-                <BsDatabase size={iconSize} />
+                <Checkbox onClick={() => handleCheckbox(item.title)} />
                 <div className="flex flex-col">
                   <Label variant={'subtitle'}>{item.title}</Label>
                   <Label variant={'input'}>{item.description}</Label>
@@ -52,26 +76,22 @@ function Datasets() {
                     {item.date}
                   </Label>
                 </div>
-                <div className="ml-auto">
+                <div className="ml-auto flex flex-col gap-3">
                   <Dialog>
                     <DialogTrigger asChild>
-                      <BsGear
+                      <FiMenu
                         size={20}
                         className="text-gray-400 hover:text-primary cursor-pointer"
                       />
                     </DialogTrigger>
-                    <DialogContent className="max-w-6xl">
-                      <DialogHeader>
-                        <DialogTitle>Configure data</DialogTitle>
-                        <DialogDescription>Normal Dist.2</DialogDescription>
-                      </DialogHeader>
+                    <DialogContent className="max-w-4xl p-10">
                       <div className="grid grid-cols-2 gap-10">
                         <section className="">
-                          <div className="space-y-2 mb-6">
+                          <div className="flex flex-col spacing-2 gap-3 space-y-2 mb-6">
                             <Label variant={'label'}>Enter Range</Label>
                             <div className="flex gap-5 items-center">
-                              <Input placeholder="Min" />
-                              <Input placeholder="Max" />
+                              <Input placeholder="Min" className="p-5" />
+                              <Input placeholder="Max" className="p-5" />
                             </div>
                             <div className="flex items-center gap-2">
                               <Checkbox />{' '}
@@ -93,9 +113,9 @@ function Datasets() {
                           <div className="space-y-2">
                             <Label>Advanced</Label>
                             <div className="flex gap-5 items-center">
-                              <Input placeholder="Mean (μ)" />
-                              <Input placeholder="Mode" />
-                              <Input placeholder="S.D (σ)" />
+                              <Input placeholder="Mean (μ)" className="p-5" />
+                              <Input placeholder="Mode" className="p-5" />
+                              <Input placeholder="S.D (σ)" className="p-5" />
                             </div>
                           </div>
                         </section>
@@ -116,7 +136,130 @@ function Datasets() {
           </div>
         </div>
         <div className="col-span-9 border rounded-lg">
-          <div className="grid md:grid-cols-3 gap-5 items-center"></div>
+          <div className="grid md:grid-cols-1 gap-5 items-center">
+            {/* Items selector */}
+            <div className="flex flex-col gap-2 bg-gradient-to-r from-indigo-100 via-blue-200 to-emerald-300 p-10 w-full">
+              {!selectedDatasets.length && (
+                <span className="text-lg text-black">
+                  Selected datasets will appear here
+                </span>
+              )}
+
+              <div className="flex flex-row gap-3">
+                {!!selectedDatasets?.length &&
+                  selectedDatasets.map((dataset) => (
+                    <div className="bg-white rounded-lg p-3 w-fit">
+                      {dataset}
+                    </div>
+                  ))}
+              </div>
+            </div>
+
+            {/* Test selector */}
+            <div className="flex p-2">
+              <div className="flex flex-row items-center gap-3">
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Button variant={'secondary'} size={'lg'}>
+                      <FiCpu />
+                      Select test
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent className="max-w-4xl p-10 bg-zinc-50">
+                    <div className="flex p-3">
+                      <span className="text-lg">Select a statistical test</span>
+                    </div>
+                    <div className="grid grid-cols-3 gap-3 spacing-3">
+                      {testFeatures.map((feature) => (
+                        <div className="flex flex-col gap-3 bg-white cursor-pointer rounded-lg border p-3 hover:border-2 hover:shadow-xl">
+                          <img src={feature.iconUrl} />
+                          <div className="flex flex-row gap-2">
+                            <span className="text-md">{feature.title}</span>
+                            <Popover>
+                              <PopoverTrigger>
+                                <FiInfo className="text-xl" />
+                              </PopoverTrigger>
+                              <PopoverContent>
+                                {feature.description}
+                              </PopoverContent>
+                            </Popover>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </DialogContent>
+                </Dialog>
+                <span className="flex flex-row items-center gap-2 border rounded-lg p-3">
+                  <FiBox />
+                  T-Test
+                </span>
+                <Button>
+                  <FiDownload />
+                  Export
+                </Button>
+              </div>
+            </div>
+
+            <div className="grid md:grid-cols-12 p-5 gap-5">
+              <div className="col-span-6 p-2 w-full">
+                <SpreadsheetChart />
+              </div>
+              <div className="col-span-6 p-2">
+                <div className="flex flex-col items-start gap-3">
+                  <div className=" flex flex-col">
+                    <span className="text-lg">Results</span>
+                  </div>
+
+                  <div className="border flex flex-col rounded-lg p-3 gap-3">
+                    <div className="flex flex-row items-center gap-3">
+                      <span className="text-2xl">3.12</span>
+                      <span className="text-lg">
+                        <FiEdit2 />
+                      </span>
+                    </div>
+                    <label className="font-semibold">T-value</label>
+                    <span className="text-sm text-zinc-500">
+                      measures how far the sample means are from each other in
+                      terms of standard errors.
+                    </span>
+                    <div className="flex flex-row gap-3">
+                      <Input
+                        type="text"
+                        variant={'default'}
+                        className="w-fit"
+                        placeholder="Your t-value"
+                      />
+                      <Button>Manipulate</Button>
+                    </div>
+                  </div>
+                  <div className="border flex flex-col rounded-lg p-3 gap-3">
+                    <div className="flex flex-row items-center gap-3">
+                      <span className="text-2xl">0.012</span>
+                      <span className="text-lg">
+                        <FiEdit2 />
+                      </span>
+                    </div>
+                    <label className="font-semibold">P-value</label>
+                    <span className="text-sm text-zinc-500">
+                      tells you the likelihood that this difference is due to
+                      chance. If it’s less than your chosen significance level
+                      (commonly 0.05), you can conclude that the means are
+                      significantly different.
+                    </span>
+                    <div className="flex flex-row gap-3">
+                      <Input
+                        type="text"
+                        variant={'default'}
+                        className="w-fit"
+                        placeholder="Your p-value"
+                      />
+                      <Button>Manipulate</Button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </CardContent>
     </Card>
