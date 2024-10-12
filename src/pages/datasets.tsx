@@ -5,6 +5,16 @@ import { Card, CardContent } from '../components/ui/card';
 import { Checkbox } from '../components/ui/checkbox';
 
 import {
+  FiBox,
+  FiCpu,
+  FiDownload,
+  FiEdit2,
+  FiInfo,
+  FiLayers,
+  FiMenu,
+} from 'react-icons/fi';
+import { SpreadsheetChart } from '../components/Charts/Spreadsheet';
+import {
   Dialog,
   DialogContent,
   DialogFooter,
@@ -12,33 +22,14 @@ import {
 } from '../components/ui/dialog';
 import { Input, InputWithButton } from '../components/ui/input';
 import { Label } from '../components/ui/label';
-import { Slider } from '../components/ui/slider';
-import { datasetsList } from '../data/datasets/data';
-import {
-  FiActivity,
-  FiBox,
-  FiCpu,
-  FiDownload,
-  FiEdit,
-  FiEdit2,
-  FiInfo,
-  FiLayers,
-  FiMenu,
-  FiRefreshCcw,
-  FiRefreshCw,
-} from 'react-icons/fi';
 import {
   Popover,
-  PopoverTrigger,
   PopoverContent,
+  PopoverTrigger,
 } from '../components/ui/popover';
+import { Slider } from '../components/ui/slider';
+import { datasetsList } from '../data/datasets/data';
 import { testFeatures } from '../data/datasets/test-features';
-import {
-  SpreadsheetChart,
-  SpreadSheetComp,
-} from '../components/Charts/spreadsheet';
-
-const iconSize = 30;
 
 function Datasets() {
   const [selectedDatasets, setSelectedDatasets] = useState<string[]>([]);
@@ -148,7 +139,10 @@ function Datasets() {
               <div className="flex flex-row gap-3">
                 {!!selectedDatasets?.length &&
                   selectedDatasets.map((dataset) => (
-                    <div className="bg-white rounded-lg p-3 w-fit">
+                    <div
+                      key={dataset}
+                      className="bg-white rounded-lg p-3 w-fit"
+                    >
                       {dataset}
                     </div>
                   ))}
@@ -171,8 +165,11 @@ function Datasets() {
                     </div>
                     <div className="grid grid-cols-3 gap-3 spacing-3">
                       {testFeatures.map((feature) => (
-                        <div className="flex flex-col gap-3 bg-white cursor-pointer rounded-lg border p-3 hover:border-2 hover:shadow-xl">
-                          <img src={feature.iconUrl} />
+                        <div
+                          key={feature.title}
+                          className="flex flex-col gap-3 bg-white cursor-pointer rounded-lg border p-3 hover:border-2 hover:shadow-xl"
+                        >
+                          <img alt={feature.title} src={feature.iconUrl} />
                           <div className="flex flex-row gap-2">
                             <span className="text-md">{feature.title}</span>
                             <Popover>
@@ -217,7 +214,9 @@ function Datasets() {
                         <FiEdit2 />
                       </span>
                     </div>
-                    <label className="font-semibold">T-value</label>
+                    <Label variant="default" className="font-semibold">
+                      T-value
+                    </Label>
                     <span className="text-sm text-zinc-500">
                       measures how far the sample means are from each other in
                       terms of standard errors.
@@ -239,7 +238,9 @@ function Datasets() {
                         <FiEdit2 />
                       </span>
                     </div>
-                    <label className="font-semibold">P-value</label>
+                    <Label variant="default" className="font-semibold">
+                      P-value
+                    </Label>
                     <span className="text-sm text-zinc-500">
                       tells you the likelihood that this difference is due to
                       chance. If it’s less than your chosen significance level
