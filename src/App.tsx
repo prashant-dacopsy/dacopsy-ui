@@ -1,5 +1,6 @@
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import Structure from './components/Layout/Structure';
+import Admin from './pages/admin';
 import Dashboard from './pages/dashoard';
 import Datasets from './pages/datasets';
 import LoginPage from './pages/login';
@@ -14,6 +15,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<LoginPage />} />
+        <Route path="/admin-login" element={<Admin />} />
         <Route path="/verified" element={<Verified />} />
         <Route path="/trail" element={<TrailPage />} />
         {/* Routes with layout */}
