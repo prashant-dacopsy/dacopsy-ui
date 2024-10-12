@@ -12,7 +12,7 @@ interface LoginPageProps {}
 const LoginPage: React.FC<LoginPageProps> = () => {
   const navigate = useNavigate();
   return (
-    <div className="grid grid-cols-2 gap-20 items-center ">
+    <div className="grid grid-cols-2 gap-20 items-center relative">
       <div className="h-screen cont bg-primary px-20  flex flex-col justify-center">
         <div className="space-y-5">
           <div className="flex gap-2 items-center">
@@ -91,6 +91,11 @@ const LoginPage: React.FC<LoginPageProps> = () => {
             Connect via Google
           </Button>
         </div>
+      </div>
+      <div className="absolute top-5 right-5">
+        <Button onClick={() => navigate('./admin-login')} variant="outline">
+          Admin Login!
+        </Button>
       </div>
     </div>
   );
