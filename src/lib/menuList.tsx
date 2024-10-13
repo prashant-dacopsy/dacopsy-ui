@@ -1,19 +1,18 @@
 import { ReactElement } from 'react';
 import { FaUserCircle } from 'react-icons/fa';
-import { FaMessage } from 'react-icons/fa6';
 import { MdSubscriptions } from 'react-icons/md';
-import { TbClock, TbDatabaseCog, TbFolderOpen } from 'react-icons/tb';
+import { TbClock } from 'react-icons/tb';
 const iconSize = 25;
 const iconSizeCollapsed = 25;
 
 import {
-  FiZap,
-  FiLayout,
+  FiBox,
   FiLayers,
+  FiLayout,
+  FiPhoneCall,
   FiPlayCircle,
   FiUser,
-  FiPhoneCall,
-  FiBox,
+  FiZap,
 } from 'react-icons/fi';
 
 // Define the interface for a menu item
@@ -75,5 +74,32 @@ export const menuItems: MenuItem[] = [
     icon: <FiPhoneCall size={iconSize} />,
     collapsedIcon: <FiPhoneCall size={iconSizeCollapsed} />,
     url: '/support',
+  },
+];
+
+export const adminMenuItems: MenuItem[] = [
+  {
+    id: 1,
+    title: 'Users',
+    description: 'Manage your users',
+    icon: <FaUserCircle size={iconSize} />,
+    collapsedIcon: <FaUserCircle size={iconSizeCollapsed} />,
+    url: '../admin/user-management',
+  },
+  {
+    id: 3,
+    title: 'Subscriptions',
+    description: 'Manage your subscriptions',
+    icon: <MdSubscriptions size={iconSize} />,
+    collapsedIcon: <MdSubscriptions size={iconSizeCollapsed} />,
+    url: '../admin/subscriptions',
+  },
+  {
+    id: 4,
+    title: 'Reports',
+    description: 'Manage your Reports',
+    icon: <TbClock size={iconSize} />,
+    collapsedIcon: <TbClock size={iconSizeCollapsed} />,
+    url: '../admin/reports',
   },
 ];
