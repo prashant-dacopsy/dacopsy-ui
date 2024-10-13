@@ -1,0 +1,81 @@
+import { User } from '../../types/user';
+
+export const userManagementData: User[] = [
+  {
+    id: 1,
+    name: 'John Doe',
+    email: 'johndoe@example.com',
+    role: 'Admin',
+    status: 'Active',
+  },
+  {
+    id: 2,
+    name: 'Mark Smith',
+    email: 'marksmith@example.com',
+    role: 'user',
+    status: 'Active',
+  },
+  {
+    id: 3,
+    name: 'Jane Scott',
+    email: 'janescott@example.com',
+    role: 'user',
+    status: 'Active',
+  },
+  {
+    id: 4,
+    name: 'Emily Carter',
+    email: 'emilycarter@example.com',
+    role: 'Admin',
+    status: 'Inactive',
+  },
+  {
+    id: 5,
+    name: 'Michael Johnson',
+    email: 'michaeljohnson@example.com',
+    role: 'user',
+    status: 'Active',
+  },
+  {
+    id: 6,
+    name: 'Sarah Williams',
+    email: 'sarahwilliams@example.com',
+    role: 'user',
+    status: 'Inactive',
+  },
+  {
+    id: 7,
+    name: 'David Brown',
+    email: 'davidbrown@example.com',
+    role: 'Admin',
+    status: 'Active',
+  },
+  {
+    id: 8,
+    name: 'Lisa Garcia',
+    email: 'lisagarcia@example.com',
+    role: 'user',
+    status: 'Active',
+  },
+  {
+    id: 9,
+    name: 'James Wilson',
+    email: 'jameswilson@example.com',
+    role: 'user',
+    status: 'Inactive',
+  },
+  {
+    id: 10,
+    name: 'Sophia Davis',
+    email: 'sophiadavis@example.com',
+    role: 'Admin',
+    status: 'Active',
+  },
+  {
+    id: 11,
+    name: 'Alexander Martinez',
+    email: 'alexandermartinez@example.com',
+    role: 'user',
+    status: 'Active',
+  },
+];

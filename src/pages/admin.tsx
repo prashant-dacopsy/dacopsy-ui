@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '../components/ui/button';
 import {
   Card,
@@ -11,6 +11,7 @@ import {
 import { Input } from '../components/ui/input';
 import { Label } from '../components/ui/label';
 function Admin() {
+  const navigate = useNavigate();
   return (
     <div className="flex items-center flex-col w-full gap-4 justify-center h-screen">
       <Card className="w-96">
@@ -44,7 +45,9 @@ function Admin() {
         </CardContent>
         <CardFooter className="justify-end gap-2">
           <Button variant="outline">Sign-up!</Button>
-          <Button>Login!</Button>
+          <Button onClick={() => navigate('../admin/user-management')}>
+            Login!
+          </Button>
         </CardFooter>
       </Card>
     </div>
