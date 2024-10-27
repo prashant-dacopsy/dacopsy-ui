@@ -93,8 +93,8 @@ const LoginPage: React.FC<LoginPageProps> = () => {
         </div>
       </div>
       <div className="absolute top-5 right-5">
-        <Button onClick={() => navigate('./admin-login')} variant="outline">
-          Admin Login!
+        <Button onClick={() => navigate('./register')} variant="link">
+          New User? Sign up!
         </Button>
       </div>
     </div>

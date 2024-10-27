@@ -16,6 +16,7 @@ function App() {
       <Routes>
         <Route path="/" element={<LoginPage />} />
         <Route path="/admin-login" element={<Admin />} />
+        <Route path="/register" element={<RegisterUser />} />
         <Route path="/verified" element={<Verified />} />
         <Route path="/trail" element={<TrailPage />} />
         {/* Routes with layout */}
