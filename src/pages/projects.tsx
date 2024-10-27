@@ -1,22 +1,10 @@
 // import CoverImg from '../assets/Blue Background White Doodles Set.jpg';
-import {
-  FiDatabase,
-  FiFolder,
-  FiMaximize,
-  FiMaximize2,
-  FiPlus,
-} from 'react-icons/fi';
+import { FiDatabase, FiFolder, FiPlus } from 'react-icons/fi';
 import { Button } from '../components/ui/button';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-} from '../components/ui/card';
+import { Card, CardContent, CardDescription } from '../components/ui/card';
 import { Input } from '../components/ui/input';
 import { Label } from '../components/ui/label';
 import { projectsList } from '../data/projects/data';
-import { Progress } from '../components/ui/progress';
 
 export default function Projects() {
   const countries = ['Argentina', 'Brazil', 'Nepal', 'Paraguay'];

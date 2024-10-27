@@ -33,7 +33,7 @@ const LoginPage: React.FC<LoginPageProps> = () => {
             <Button
               onClick={() => navigate('./trail')}
               variant={'secondary'}
-              className="w-36 text-lg gap-5 text-white font-light h-14"
+              className="w-36 text-lg gap-5 font-light h-14"
             >
               Try Now <RiBox3Line size={30} />
             </Button>
