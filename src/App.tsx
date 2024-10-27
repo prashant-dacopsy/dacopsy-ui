@@ -1,3 +1,4 @@
+import React from 'react';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import AdminStructure from './components/Layout/AdminStructure';
 import Structure from './components/Layout/Structure';
@@ -7,6 +8,7 @@ import Datasets from './pages/datasets';
 import LoginPage from './pages/login';
 import Profile from './pages/profile';
 import Projects from './pages/projects';
+import RegisterUser from './pages/register';
 import Reports from './pages/reports';
 import SubscriptionPage from './pages/subscription';
 import TrailPage from './pages/trail';
